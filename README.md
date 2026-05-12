@@ -60,8 +60,6 @@
 
 ### Part 3b: Why Each Phase Holds
 
-> One to two bullets per phase. Maintenance must mention nonnegative edge weights.
-
 - **Initialization : why the invariant holds before iteration 1:**
   Before the first iteration, no nodes have been finalized yet. The source has distance 0, and every other node is set to infinity because no routes to them have been discovered.
 
@@ -74,9 +72,7 @@
 
 ### Part 3c: Why This Matters for the Route Planner
 
-> One sentence connecting correct distances to correct routing decisions.
-
-_Your answer here._
+Correct shortest-path distances ensure that the route planner compares relic visit orders using real minimum travel costs instead of inaccurate estimates.
 
 ---
 
@@ -84,20 +80,19 @@ _Your answer here._
 
 ### Why Greedy Fails
 
-> State the failure mode. Then give a concrete counter-example using specific node names
-> or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** Greedy can fail because choosing the nearest next relic only considers the immediate cost, not how that choice affects the remaining route.
+
+- **Counter-example setup:** From the spec example, `S` can reach `B`, `C`, and `D`, but the later costs between relics and the exit make some visit sequences cheaper than others.
+- **What greedy picks:** A greedy approach may choose `S -> C -> B -> D -> T` because `C` is close to `S`, giving a total cost of 5.
+- **What optimal picks:** The optimal route is `S -> B -> D -> C -> T`, with a total cost of 4.
+
+- **Why greedy loses:** Greedy loses because its first locally cheap decision creates a worse sequence of later moves, while the optimal route has a lower total cost across the full relic order.
+
 
 ### What the Algorithm Must Explore
 
-> One bullet. Must use the word "order."
-
-- _Your answer here._
+- The algorithm must explore different relic visit orders because the same set of relics can produce different total fuel costs depending on the order selected.
 
 ---
 

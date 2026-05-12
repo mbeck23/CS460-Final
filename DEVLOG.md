@@ -20,6 +20,10 @@ I plan to start by reading through the assignment and fully understanding the pr
 
 I completed Parts 1 and 2, focusing on understanding the problem and implementing the precomputation step. Writing Part 1 helped clarify that the main challenge is deciding the order of relic visits rather than just finding shortest paths. For Part 2, I implemented Dijkstra’s algorithm and built a distance table to store shortest paths between relevant nodes. Everything is working so far, and the logic seems correct, but I have not yet tested it against the full pipeline since later parts are still incomplete.
 
+## Entry 3 – [May 12, 2026]: Part 3 and Part 4 Completed
+
+I worked on parts 3 and 4 today, specifically on understanding why Dijkstra's algorithm is correct and how the search component needs to be structured. Writing out the invariant helped to clarify why the distances that are produced by Dijkstra's are reliable, especially with nonnegative edge weights. In part 4, I worked on why a greedy approach fails and used the example from the spec to show how different orders can produce different total costs. This actually made it clear that the solution needs to explore permutations of relic visits instead of making local decisions. 
+
 ## Entry 2 – [Date]: [Short description]
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
@@ -50,9 +54,9 @@ _Your entry here._
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
-| Part 2: Precomputation Design | |
-| Part 3: Algorithm Correctness | |
+| Part 1: Problem Analysis | 0.5 hours |
+| Part 2: Precomputation Design | 1.5 hours |
+| Part 3: Algorithm Correctness | 1 hour|
 | Part 4: Search Design | |
 | Part 5: State and Search Space | |
 | Part 6: Pruning | |
