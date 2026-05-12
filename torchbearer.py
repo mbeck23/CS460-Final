@@ -156,7 +156,27 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "TODO"
+    return (
+        "- For nodes already finalized: "
+        "Once a node is finalized, its stored distance is no longer an estimate; "
+        "it is the true minimum cost from the source to that node.\n"
+        "- For nodes not yet finalized: "
+        "For unfinished nodes, the stored distance is the best route found so far using only finalized nodes "
+        "as the internal part of the path.\n"
+        "- Initialization: "
+        "Before the first iteration, no nodes have been finalized yet. The source has distance 0, "
+        "and every other node is set to infinity because no routes to them have been discovered.\n"
+        "- Maintenance: "
+        "The algorithm always chooses the unfinished node with the smallest current distance. "
+        "Since all edge weights are nonnegative, any later path to that node would have to be at least as large, "
+        "so its current distance is safe to finalize.\n"
+        "- Termination: "
+        "When the algorithm finishes, every reachable node has its true shortest-path distance from the source, "
+        "and unreachable nodes remain at infinity.\n"
+        "- Why this matters: "
+        "Correct shortest-path distances ensure that the route planner compares relic visit orders using real "
+        "minimum travel costs instead of inaccurate estimates."
+    )
 
 
 # =============================================================================
