@@ -1,13 +1,8 @@
 # The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:**  Miranda Becker 
+**Student ID:** 130328286
 **Course:** CS 460 – Algorithms | Spring 2026
-
-> This README is your project documentation. Write it the way a developer would document
-> their design decisions , bullet points, brief justifications, and concrete examples where
-> required. You are not writing an essay. You are explaining what you built and why you built
-> it that way. Delete all blockquotes like this one before submitting.
 
 ---
 
@@ -17,13 +12,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  A single shortest-path run from S computes the minimum cost to reach each node independently, but it doesn't determine the best sequence in which the relic chambers should be visited.
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  After all pairwise shortest paths are known, the remaining task is selecting the optimal order to visit all relic nodes before proceeding to the exit.
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  This is a search over orders because the total path cost depends on the sequence of relic visits, and different permutations can produce different overall costs.
 
 ---
 

@@ -2,8 +2,8 @@
 CS 460 – Algorithms: Final Programming Assignment
 The Torchbearer
 
-Student Name: ___________________________
-Student ID:   ___________________________
+Student Name: Miranda Becker
+Student ID:   130328286
 
 INSTRUCTIONS
 ------------
@@ -25,16 +25,17 @@ import heapq
 # =============================================================================
 
 def explain_problem():
-    """
-    Returns
-    -------
-    str
-        Your Part 1 README answers, written as a string.
-        Must match what you wrote in README Part 1.
-
-    TODO
-    """
-    return "TODO"
+    return (
+        "- Why a single shortest-path run from S is not enough: "
+        "A single shortest-path run from S computes the minimum cost to reach each node independently, "
+        "but it doesn't determine the best sequence in which the relic chambers should be visited.\n"
+        "- What decision remains after all inter-location costs are known: "
+        "After all pairwise shortest paths are known, the remaining task is selecting the optimal order "
+        "to visit all relic nodes before proceeding to the exit.\n"
+        "- Why this requires a search over orders: "
+        "This is a search over orders because the total path cost depends on the sequence of relic visits, "
+        "and different permutations can produce different overall costs."
+    )
 
 
 # =============================================================================
