@@ -25,6 +25,15 @@ import heapq
 # =============================================================================
 
 def explain_problem():
+    """
+    Returns
+    -------
+    str
+        Your Part 1 README answers, written as a string.
+        Must match what you wrote in README Part 1.
+
+    TODO
+    """
     return (
         "- Why a single shortest-path run from S is not enough: "
         "A single shortest-path run from S computes the minimum cost to reach each node independently, "
@@ -57,7 +66,16 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    sources = []
+    seen = set()
+
+    for node in [spawn] + list(relics):
+        if node not in seen:
+            sources.append(node)
+            seen.add(node)
+
+    return sources
+
 
 
 def run_dijkstra(graph, source):
@@ -76,7 +94,26 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    pass
+    dist = {node: float('inf') for node in graph}
+    dist[source] = 0
+
+    priority_queue = [(0, source)]
+
+    while priority_queue:
+        current_dist, current_node = heapq.heappop(priority_queue)
+
+        if current_dist > dist[current_node]:
+            continue
+
+        for neighbor, cost in graph.get(current_node, []):
+            new_dist = current_dist + cost
+
+            if new_dist < dist.get(neighbor, float('inf')):
+                dist[neighbor] = new_dist
+                heapq.heappush(priority_queue, (new_dist, neighbor))
+
+    return dist
+
 
 
 def precompute_distances(graph, spawn, relics, exit_node):
@@ -96,7 +133,13 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    sources = select_sources(spawn, relics, exit_node)
+    dist_table = {}
+
+    for source in sources:
+        dist_table[source] = run_dijkstra(graph, source)
+
+    return dist_table
 
 
 # =============================================================================

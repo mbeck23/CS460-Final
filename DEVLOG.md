@@ -1,7 +1,7 @@
 # Development Log – The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Miranda Becker
+**Student ID:** 130328286
 
 > Instructions: Write at least four dated entries. Required entry types are marked below.
 > Two to five sentences per entry is sufficient. Write entries as you go, not all in one
@@ -10,14 +10,15 @@
 
 ---
 
-## Entry 1 – [Date]: Initial Plan
+## Entry 1 – [May 11, 2026]: Initial Plan
 
-> Required. Write this before writing any code. Describe your plan: what you will
-> implement first, what parts you expect to be difficult, and how you plan to test.
-
-_Your entry here._
+I plan to start by reading through the assignment and fully understanding the problem structure before writing any code. I want to complete Part 1 first to clarify why this is not just a shortest-path problem, then move into Part 2 by implementing Dijkstra and the distance precomputation logic. I expect the search portion (Parts 5 and 6) to be the most difficult since it involves exploring permutations and pruning efficiently. For testing, I will use the provided test cases in torchbearer.py and run them after completing each section to make sure everything is working correctly before moving on.
 
 ---
+
+## Entry 2 – [May 11, 2026]: Parts 1 and 2 Completed
+
+I completed Parts 1 and 2, focusing on understanding the problem and implementing the precomputation step. Writing Part 1 helped clarify that the main challenge is deciding the order of relic visits rather than just finding shortest paths. For Part 2, I implemented Dijkstra’s algorithm and built a distance table to store shortest paths between relevant nodes. Everything is working so far, and the logic seems correct, but I have not yet tested it against the full pipeline since later parts are still incomplete.
 
 ## Entry 2 – [Date]: [Short description]
 

@@ -8,9 +8,6 @@
 
 ## Part 1: Problem Analysis
 
-> Document why this problem is not just a shortest-path problem. Three bullet points, one
-> per question. Each bullet should be 1-2 sentences max.
-
 - **Why a single shortest-path run from S is not enough:**
   A single shortest-path run from S computes the minimum cost to reach each node independently, but it doesn't determine the best sequence in which the relic chambers should be visited.
 
@@ -26,33 +23,28 @@
 
 ### Part 2a: Source Selection
 
-> List the source node types as a bullet list. For each, one-line reason.
-
 | Source Node Type | Why it is a source |
 |---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| Entrance node `spawn` | The route always begins at the entrance, so the planner needs shortest distances from `spawn` to each possible first relic. |
+| Relic nodes in `relics` | After collecting a relic, the planner may need to travel from that relic to another relic or to the exit. |
 
 ### Part 2b: Distance Storage
 
-> Fill in the table. No prose required.
-
 | Property | Your answer |
 |---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Data structure name | Nested dictionary `dist_table` |
+| What the keys represent | Outer keys are source nodes; inner keys are destination nodes. |
+| What the values represent | Minimum fuel cost from the source node to the destination node. |
+| Lookup time complexity | `O(1)` average-case lookup |
+| Why O(1) lookup is possible | Python dictionaries use hash tables, so `dist_table[u][v]` is average-case constant time. |
 
 ### Part 2c: Precomputation Complexity
 
-> State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** _your answer_
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
-- **Justification (one line):** _your answer_
+- **Number of Dijkstra runs:** `k + 1`
+- **Cost per run:** `O(m log n)`
+- **Total complexity:** `O((k + 1)m log n)`
+- **Justification (one line):** Dijkstra is run once from `spawn` and once from each of the `k` relic nodes.
 
 ---
 
