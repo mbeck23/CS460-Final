@@ -3,11 +3,6 @@
 **Student Name:** Miranda Becker
 **Student ID:** 130328286
 
-> Instructions: Write at least four dated entries. Required entry types are marked below.
-> Two to five sentences per entry is sufficient. Write entries as you go, not all in one
-> sitting. Graders check that entries reflect genuine work across multiple sessions.
-> Delete all blockquotes before submitting.
-
 ---
 
 ## Entry 1 – [May 11, 2026]: Initial Plan
@@ -24,18 +19,15 @@ I completed Parts 1 and 2, focusing on understanding the problem and implementin
 
 I worked on parts 3 and 4 today, specifically on understanding why Dijkstra's algorithm is correct and how the search component needs to be structured. Writing out the invariant helped to clarify why the distances that are produced by Dijkstra's are reliable, especially with nonnegative edge weights. In part 4, I worked on why a greedy approach fails and used the example from the spec to show how different orders can produce different total costs. This actually made it clear that the solution needs to explore permutations of relic visits instead of making local decisions. 
 
-## Entry 2 – [Date]: [Short description]
+## Entry 4 – [May 14, 2026]: State Structure Design Change
 
-> Required. At least one entry must describe a bug, wrong assumption, or design change
-> you encountered. Describe what went wrong and how you resolved it.
-
-_Your entry here._
+When I was working on part 5, I tried to collect relics with a list, but it started to cause some confusion when checking which relics were still remaining since I had to repeatedly compare against the full list of relics. I also ran into a lot of mistakes with backtracking because removing and re-adding elements affected the ordering in ways I did not intend originally. So instead, I changed the design to use a set called `relics_remaining`, which actually makes membership checks, removal, and backtracking much more efficient and clean. This also makes the search state easier to reasn about because the list `relics_visited_order` only stores the route order, while the set stores what remains instead. 
 
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – [May 14, 2026]: Parts 5 and 6 Completed
 
-_Your entry here._
+I implemented the recursive search for parts 5 and 6 today, working on how to represent the state and reduce the searchs space. I used a combo of the current location, a set of remaining relics, and the cost so far to completely capture the state at each set. When I was testing, I ran into an issue where my solve function was returning None, which I then traced back to forgetting to return the result from find_optimal_route. After fixing that, I added pruning by backtracking the best solution found so far, and stopping at any branch that couldn't improve it. This actually significantly reduced the number of paths that were explored and made the solution efficient while still producing the correct results. 
 
 ---
 
@@ -50,16 +42,14 @@ _Your entry here._
 
 ## Final Entry – [Date]: Time Estimate
 
-> Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
-
 | Part | Estimated Hours |
 |---|---|
 | Part 1: Problem Analysis | 0.5 hours |
 | Part 2: Precomputation Design | 1.5 hours |
 | Part 3: Algorithm Correctness | 1 hour|
-| Part 4: Search Design | |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
+| Part 4: Search Design | 1 hour |
+| Part 5: State and Search Space | 1.5 hours |
+| Part 6: Pruning | 1.5 hours |
+| Part 7: Implementation | 2 hours |
 | README and DEVLOG writing | |
 | **Total** | |
