@@ -100,14 +100,11 @@ Correct shortest-path distances ensure that the route planner compares relic vis
 
 ### Part 5a: State Representation
 
-> Document the three components of your search state as a table.
-> Variable names here must match exactly what you use in torchbearer.py.
-
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Current location | `current_loc` | node | The node where the search currently is. |
+| Relics already collected | `relics_visited_order` | list | The ordered list of relics collected so far. |
+| Fuel cost so far | `cost_so_far` | float | The total fuel used by the current partial route. |
 
 ### Part 5b: Data Structure for Visited Relics
 
@@ -115,18 +112,18 @@ Correct shortest-path distances ensure that the route planner compares relic vis
 
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Data structure chosen | `set` for `relics_remaining` |
+| Operation: check if relic already collected | Time complexity: `O(1)` average-case|
+| Operation: mark a relic as collected | Time complexity: `O(1)` average-case using `remove()` |
+| Operation: unmark a relic (backtrack) | Time complexity: `O(1)` average-case using `add()` |
+| Why this structure fits | A set supports efficient removal and restoration during recursive backtracking while clearly representing which relics still need to be visited. |
 
 ### Part 5c: Worst-Case Search Space
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** `k!`
+- **Why:** In the worst case, the algorithm may need to examine every permutation of the `k` relics.
 
 ---
 
@@ -134,30 +131,24 @@ Correct shortest-path distances ensure that the route planner compares relic vis
 
 ### Part 6a: Best-So-Far Tracking
 
-> Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** The algorithm tracks the lowest complete route cost found so far and the relic order that produced it.
+- **When it is used:** It is checked during recursion before continuing deeper into a partial route.
+- **What it allows the algorithm to skip:** It allows the search to skip any branch whose current fuel cost is already greater than or equal to the best complete route found so far.
 
 ### Part 6b: Lower Bound Estimation
 
-> Three bullets.
-
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** The algorithm knows the current location, the relics still remaining, the order already chosen, and the fuel cost so far.
+- **What the lower bound accounts for:** The lower bound uses `cost_so_far`, which is the fuel already spent before visiting the remaining relics and exit.
+- **Why it never overestimates:** Since all future travel costs are nonnegative, the final route cost can never be less than the fuel already spent.
 
 ### Part 6c: Pruning Correctness
 
-> One to two bullets. Explain why pruning is safe.
-
-- _Your answer here._
+- If `cost_so_far` is already at least the best complete solution found, continuing that branch cannot produce a better route because all remaining edge costs are nonnegative.
+- Therefore, pruning that branch cannot remove the optimal solution.
 
 ---
 
 ## References
 
-> Bullet list. If none beyond lecture notes, write that.
-
-- _Your references here._
+- _Lecture Notes_

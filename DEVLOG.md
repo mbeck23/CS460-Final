@@ -25,22 +25,20 @@ When I was working on part 5, I tried to collect relics with a list, but it star
 
 ---
 
-## Entry 3 – [May 14, 2026]: Parts 5 and 6 Completed
+## Entry 5 – [May 14, 2026]: Parts 5 and 6 Completed
 
-I implemented the recursive search for parts 5 and 6 today, working on how to represent the state and reduce the searchs space. I used a combo of the current location, a set of remaining relics, and the cost so far to completely capture the state at each set. When I was testing, I ran into an issue where my solve function was returning None, which I then traced back to forgetting to return the result from find_optimal_route. After fixing that, I added pruning by backtracking the best solution found so far, and stopping at any branch that couldn't improve it. This actually significantly reduced the number of paths that were explored and made the solution efficient while still producing the correct results. 
-
----
-
-## Entry 4 – [Date]: Post-Implementation Reflection
-
-> Required. Written after your implementation is complete. Describe what you would
-> change or improve given more time.
-
-_Your entry here._
+I implemented the recursive search for parts 5 and 6 today, working on how to represent the state and reduce the searchs space. I used a combo of the current location, a set of remaining relics, and the cost so far to completely capture the state at each step. When I was testing, I ran into an issue where my solve function was returning None, which I then traced back to forgetting to return the result from find_optimal_route. After fixing that, I added pruning by tracking the best solution found so far, and stopping at any branch that couldn't improve it. This actually significantly reduced the number of paths that were explored and made the solution efficient while still producing the correct results. 
 
 ---
 
-## Final Entry – [Date]: Time Estimate
+## Entry 6 – [May 14, 2026]: Post-Implementation Reflection
+
+
+After completing implementation, I think the overall structure of the solution worked well, and especially separating the shortest-path precomputation from the recursive search logic. However, if I had more time, I would definitely improve the pruning strategy by maybe adding a stronger lower-bound estimate instead of only comparing against the current cost so far. I would also personally test for larger graphs and edge cases so that I could better evaluate performance, especially as the number of relics increase. Additionally, I would like to clean up some repeated logic and improve my comments throughout the recursive search case so that my code is easier to follow. 
+
+---
+
+## Final Entry – [May 14, 2026]: Time Estimate
 
 | Part | Estimated Hours |
 |---|---|
@@ -51,5 +49,5 @@ _Your entry here._
 | Part 5: State and Search Space | 1.5 hours |
 | Part 6: Pruning | 1.5 hours |
 | Part 7: Implementation | 2 hours |
-| README and DEVLOG writing | |
-| **Total** | |
+| README and DEVLOG writing | ~ 2 hours total |
+| **Total** | 11 hours |
